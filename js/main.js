@@ -8,9 +8,6 @@ let isEvaluatingResult = false;
 let currentLevelTier = 1; 
 let playerExtraLives = 0; 
 
-// Background Music State
-let bgMusicInstance = null;
-
 // --- DOM References ---
 const mainMenu = document.getElementById('main-menu');
 const gameScreen = document.getElementById('game-screen');
@@ -42,21 +39,6 @@ upgradeBtn.addEventListener('click', () => {
     playSound('click');
     processUpgradePath();
 });
-
-// --- Background Music System Controller ---
-function initBackgroundMusic() {
-    if (!bgMusicInstance) {
-        bgMusicInstance = new Audio('assets/sounds/bg_music.mp3'); 
-        bgMusicInstance.loop = true;
-        bgMusicInstance.volume = 0.4; 
-        
-        bgMusicInstance.play().catch(error => {
-            console.log("Audio autoplay prevented. Interaction handles activation.", error);
-        });
-    } else if (bgMusicInstance.paused) {
-        bgMusicInstance.play().catch(() => {});
-    }
-}
 
 // --- Initialize Game Board ---
 function startGameLoop() {
