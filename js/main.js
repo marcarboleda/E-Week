@@ -26,7 +26,6 @@ const cardGrid = document.getElementById('card-grid');
 // --- Navigation & Action Event Listeners ---
 mainMenu.addEventListener('click', () => {
     playSound('click');
-    initBackgroundMusic();
     startGameLoop();
 });
 
@@ -268,7 +267,3 @@ function switchPanels(outgoing, incoming) {
         incoming.classList.add('active');
     }
 }
-
-// Global Browser Autoplay Unblockers
-window.addEventListener('click', () => { initBackgroundMusic(); }, { once: true });
-window.addEventListener('touchstart', () => { initBackgroundMusic(); }, { once: true });
