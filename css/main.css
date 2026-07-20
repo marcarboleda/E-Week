@@ -1,0 +1,52 @@
+/* --- Register Custom Local Font --- */
+@font-face {
+    font-family: 'NuHome';
+    src: url('../assets/fonts/NuHome-vL3L.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* --- Core Reset & Theme Variables --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Righteous', 'Bungee', cursive, sans-serif;
+    user-select: none;
+}
+
+:root {
+    --bg-color: #0b0a12;
+    --primary-color: #1a0b2e;
+    --neon-pink: #ff007f;
+    --neon-cyan: #00f3ff;
+    --neon-yellow: #ffea00;
+    --neon-orange: #ff5500;
+    --dark-color: #05040a;
+    --light-color: #ffffff;
+    --success-color: #00f3ff;
+}
+
+body {
+    background-color: #05040a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+/* --- Fullscreen Wrapper with background.png --- */
+.game-container {
+    background-color: var(--bg-color);
+    background-image: url('../assets/images/background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 12px solid #141124;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset 0px 0px 80px rgba(0, 0, 0, 0.9), 0 0 30px var(--neon-pink);
+}

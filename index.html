@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Musikalista: Scraks-It Cards</title>
+    <!-- Imported Groovy & Neon Fonts matching the header image style -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Righteous&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/panels.css">
+    <link rel="stylesheet" href="css/components.css">
+</head>
+
+<body>
+
+    <div class="game-container">
+
+        <!-- Main Menu -->
+        <div id="main-menu" class="panel active">
+            <div class="menu-centered-content">
+                <div class="menu-branding floating-title-anim">
+                    <h1 class="game-title">
+                        <span class="title-top">MUSIKALISTA</span>
+                        <span class="title-bottom">SCRAKS-IT CARDS</span>
+                    </h1>
+                </div>
+
+                <div class="menu-actions">
+                    <p class="arcade-start-prompt">CLICK ANYWHERE TO START</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Screen -->
+        <div id="game-screen" class="panel hidden">
+            <div class="game-header">
+                <div class="header-box">
+                    <span class="header-label">PICK A CARD</span>
+                </div>
+            </div>
+
+            <div id="card-grid" class="card-grid"></div>
+        </div>
+
+        <!-- Scratch Modal Overlay -->
+        <div id="scratch-modal" class="panel hidden">
+            <div class="modal-card-wrapper">
+                <div class="modal-card-inner" id="modal-card-inner">
+                    <!-- Back Face (Blank Surface) -->
+                    <div class="modal-card-face modal-card-back"></div>
+                    <!-- Front Face (6 Large Scratch Circles Grid) -->
+                    <div class="modal-card-face modal-card-front" id="modal-spots-container"></div>
+                </div>
+
+                <!-- Result Banner Overlay -->
+                <div id="result-overlay" class="result-overlay hidden">
+                    <div class="result-box">
+                        <h2 id="result-title">YOU WIN!</h2>
+                        <p id="result-description" class="reward-text-details">Reward description text.</p>
+
+                        <div class="modal-action-row">
+                            <!-- Refactored options to strictly match requested naming variations -->
+                            <button id="upgrade-btn" class="arcade-btn-push variant-upgrade">
+                                <span class="btn-edge"></span>
+                                <span class="btn-surface" id="upgrade-btn-text">UPGRADE</span>
+                            </button>
+                            <button id="action-btn" class="arcade-btn-push variant-accept">
+                                <span class="btn-edge"></span>
+                                <span class="btn-surface">REDEEM REWARDS</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Load scripts sequentially to maintain global references -->
+    <script src="js/audio.js"></script>
+    <script src="js/scratch-engine.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

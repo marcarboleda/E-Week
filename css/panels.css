@@ -1,0 +1,163 @@
+/* --- Panel Layout System --- */
+.panel {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    padding: 20px;
+    z-index: 2;
+}
+
+#main-menu {
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* --- Centered Menu Framework --- */
+.menu-centered-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 100px;
+    width: 100%;
+    max-width: 1200px;
+    pointer-events: none;
+}
+
+.menu-branding {
+    width: 100%;
+    transform-origin: center center;
+    filter: drop-shadow(0px 0px 25px var(--neon-pink));
+}
+
+.floating-title-anim {
+    animation: bounceTitleIdle 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes bounceTitleIdle {
+    0% {
+        transform: translateY(10px) rotate(-1deg);
+    }
+
+    100% {
+        transform: translateY(-15px) rotate(1deg);
+    }
+}
+
+.game-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* --- ENLARGED MAIN HEADER ("MUSIKALISTA") --- */
+.game-title .title-top {
+    font-size: 11.2rem;
+    font-family: 'NuHome', sans-serif;
+    background: linear-gradient(180deg, #00f3ff 0%, #ff007f 60%, #ffea00 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 3px #ffffff;
+    letter-spacing: 6px;
+    line-height: 0.9;
+    filter: drop-shadow(0 0 20px rgba(255, 0, 127, 0.9)) drop-shadow(0 0 40px rgba(0, 243, 255, 0.7));
+}
+
+/* --- ADJUSTED SUB HEADER ("SCRAKS-IT CARDS") --- */
+.game-title .title-bottom {
+    font-size: 2.5rem;
+    font-family: 'Righteous', sans-serif;
+    color: var(--light-color);
+    background: linear-gradient(135deg, #ff007f, #ff5500);
+    padding: 14px 55px;
+    border: 6px solid var(--neon-cyan);
+    border-radius: 50px;
+    margin-top: 20px;
+    display: inline-block;
+    letter-spacing: 4px;
+    text-shadow: 0 0 10px #000000, 0 0 15px var(--neon-yellow);
+    box-shadow: 0 0 30px var(--neon-pink), inset 0 0 20px rgba(255, 234, 0, 0.5);
+}
+
+.menu-actions {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.arcade-start-prompt {
+    font-size: 1.9rem;
+    font-family: 'Righteous', sans-serif;
+    color: var(--neon-cyan);
+    letter-spacing: 5px;
+    text-shadow: 0 0 10px var(--neon-cyan), 0 0 20px var(--neon-pink);
+    animation: slowBlink 1.5s ease-in-out infinite;
+}
+
+@keyframes slowBlink {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.35;
+        transform: scale(0.96);
+    }
+}
+
+/* --- Game Header System --- */
+#game-screen {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 15px;
+}
+
+.game-header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 4px solid var(--neon-pink);
+    padding-bottom: 12px;
+    box-shadow: 0 5px 20px rgba(255, 0, 127, 0.4);
+}
+
+.header-box {
+    background: linear-gradient(135deg, #1a0b2e, parsing);
+    border: 3px solid var(--neon-cyan);
+    border-radius: 25px;
+    padding: 8px 45px;
+    box-shadow: 0 0 15px var(--neon-cyan);
+}
+
+.header-label {
+    color: var(--neon-yellow);
+    font-size: 2.3rem;
+    font-family: 'Bungee', cursive;
+    letter-spacing: 3px;
+    text-shadow: 0 0 10px var(--neon-orange), 0 0 20px var(--neon-pink);
+}
+
+/* --- Large Rectangular 3x3 Card Grid --- */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 20px;
+    width: 100%;
+    max-width: 1100px;
+    height: calc(100vh - 140px);
+    padding-bottom: 10px;
+}

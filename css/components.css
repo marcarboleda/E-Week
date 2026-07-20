@@ -1,0 +1,257 @@
+/* --- 3x3 Grid Cards (Showing the Card Back Asset) --- */
+.scratch-card {
+    background-image: url('../assets/images/card_back.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 22px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.scratch-card:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 12px 25px rgba(0, 243, 255, 0.4);
+}
+
+.scratch-card:active {
+    transform: translateY(2px);
+}
+
+/* --- Scratch Modal Overlay --- */
+#scratch-modal {
+    background-color: rgba(5, 4, 10, 0.88);
+    backdrop-filter: blur(5px);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+}
+
+.modal-card-wrapper {
+    position: relative;
+    width: min(900px, 94vw);
+    height: min(580px, 78vh);
+    perspective: 1000px;
+}
+
+.modal-card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-card-inner.flipped {
+    transform: rotateY(180deg);
+}
+
+.modal-card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 32px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* Modal Back Face (The Card Back showing right before the flip animation) */
+.modal-card-back {
+    background-image: url('../assets/images/card_back.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Modal Front Face (The Background Plate acting as the sheet holding the circles) */
+.modal-card-front {
+    background-image: url('../assets/images/card_front.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: rotateY(180deg);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 4px 8px;
+    padding: 15px;
+    justify-items: center;
+    align-items: center;
+}
+
+/* Extra-Large Scratch Circles - Maximized Dimensions */
+.spot-wrapper {
+    width: min(230px, 29vw);
+    height: min(230px, 29vw);
+    max-height: 36vh;
+    max-width: 36vh;
+    border-radius: 50%;
+    border: 5px solid var(--neon-cyan);
+    position: relative;
+    overflow: hidden;
+    background-color: #ffffff;
+    background-size: 90% 90%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+canvas.scratch-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    touch-action: none;
+}
+
+/* --- 3D Neon Push Button --- */
+.arcade-btn-push {
+    position: relative;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    width: 100%;
+    height: 72px;
+}
+
+.btn-edge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--dark-color);
+    border-radius: 20px;
+    box-shadow: 0px 0px 15px var(--neon-pink);
+}
+
+.btn-surface {
+    position: absolute;
+    top: -8px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #00f3ff, #ff007f);
+    color: var(--light-color);
+    border: 4px solid var(--light-color);
+    border-radius: 20px;
+    font-size: 1.4rem;
+    font-family: 'Righteous', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.08s ease, filter 0.1s;
+    letter-spacing: 2px;
+    text-shadow: 0 0 8px #000000, 0 0 12px var(--neon-pink);
+    box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.4);
+}
+
+.arcade-btn-push:hover .btn-surface {
+    filter: brightness(1.2);
+    box-shadow: 0 0 20px var(--neon-cyan);
+}
+
+.arcade-btn-push:active .btn-surface {
+    transform: translateY(6px);
+}
+
+/* --- In-Game Result Overlay Banner --- */
+.result-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(5, 4, 10, 0.75);
+    border-radius: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 25;
+    animation: fadeInOverlay 0.2s ease-out forwards;
+}
+
+@keyframes fadeInOverlay {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.result-box {
+    background: linear-gradient(135deg, #00f3ff, #0088cc);
+    border: 6px solid var(--light-color);
+    padding: 35px 25px;
+    text-align: center;
+    width: 90%;
+    max-width: 580px;
+    border-radius: 28px;
+    box-shadow: 0 0 40px var(--neon-cyan);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    animation: panelPopIn 0.25s steps(4) forwards;
+}
+
+@keyframes panelPopIn {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+#result-title {
+    font-size: 3.8rem;
+    font-family: 'Bungee', cursive;
+    color: var(--light-color);
+    -webkit-text-stroke: 2px #000000;
+    text-shadow: 0 0 15px #ffffff, 0 0 25px var(--neon-yellow);
+    line-height: 1;
+    letter-spacing: 2px;
+}
+
+.reward-text-details {
+    color: var(--light-color);
+    font-family: 'Righteous', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    margin-bottom: 10px;
+}
+
+.modal-action-row {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+    justify-content: center;
+}
+
+.result-box.defeat-style-box {
+    background: linear-gradient(135deg, #ff007f, #99004d);
+    box-shadow: 0 0 40px var(--neon-pink);
+}
+
+.variant-upgrade .btn-surface {
+    background: linear-gradient(135deg, var(--neon-yellow), var(--neon-orange));
+    color: var(--dark-color);
+    text-shadow: none;
+    font-weight: 900;
+}
+
+.variant-accept .btn-surface {
+    background: linear-gradient(135deg, #00ff66, #009933);
+    color: var(--light-color);
+}
